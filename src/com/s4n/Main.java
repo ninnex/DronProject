@@ -17,11 +17,18 @@ public class Main {
 
         try {
 
+            Scanner psc = new Scanner(new File("conf.properties"));
+            String conf = psc.nextLine();
+            String v[] = conf.split(",");
+
+            char x = v[0].charAt(0);
+            char y = v[1].charAt(0);
+            char o = v[2].charAt(0);
 
             for (String file : Util.getDirectoryFiles()) {
 
                 Scanner sc = new Scanner(new File(file));
-                Dron dron = new Dron();
+                Dron dron = new Dron(0, 0, Constants.orientation.NORTH);
 
                 PrintWriter out = new PrintWriter(new File("files/out/out"+ file.substring(11, 13) + ".txt"));
 
@@ -31,11 +38,17 @@ public class Main {
                     String routeLine = sc.nextLine();
                     FlightController fc = new FlightController();
 
-                    System.out.println("\ninitial -> " + dron.getPosition());
+                    System.out.print("\n" + dron.getPosition());
 
                     fc.runDron(dron, routeLine);
-                    System.out.println("end -> " + dron.getPosition() + " lunch: " + dron.getLunchNumber());
-                    dron.setO(Constants.orientation.NORTH);
+                    System.out.println("   ->  " + dron.getPosition() + " \nlunchs delivered: " + dron.getLunchNumber());
+
+                    if(x != '-')
+                        dron.setX(x - '0');
+                    if(y != '-')
+                        dron.setY(y - '0');
+                    if(o != '-')
+                        dron.setO(Util.getEnumOrientation(o));
 
                     out.println(dron.getPosition());
 
@@ -44,7 +57,7 @@ public class Main {
                 out.close();
 
 
-                System.out.println("---------------------");
+                System.out.println("\n---------------------------------------------");
             }
 
 

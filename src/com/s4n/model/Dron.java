@@ -15,7 +15,7 @@ public class Dron {
     private int lunchNumber;
 
     public String getPosition(){
-        return "(" + x + ", " + y + ") dirección: " + Util.translateOrientation(o);
+        return "(" + x + ", " + y + ") dirección " + Util.translateOrientation(o);
     }
 
 
@@ -25,7 +25,14 @@ public class Dron {
         this.x = 0;
         this.y = 0;
         this.o = Constants.orientation.NORTH;
-        this.lunchNumber = 3;
+        this.lunchNumber = 0;
+    }
+
+    public Dron(int x, int y, Constants.orientation o) {
+        id = UUID.randomUUID();
+        this.x = x;
+        this.y = y;
+        this.o = o;
     }
 
     public void move(){
@@ -91,7 +98,7 @@ public class Dron {
     }
 
     public boolean deliverLunch(){
-        this.lunchNumber--;
+        this.lunchNumber++;
         return lunchNumber >= 0;
     }
 

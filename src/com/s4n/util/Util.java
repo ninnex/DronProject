@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
+import static com.s4n.util.Constants.orientation.*;
+
 public class Util {
 
     public static List<String> getDirectoryFiles(){
@@ -36,5 +38,19 @@ public class Util {
                 return "Occidente";
         }
         return null;
+    }
+
+    public static Constants.orientation getEnumOrientation(char ori){
+        switch (ori){
+            case 'N':
+                return NORTH;
+            case 'S':
+                return SOUTH;
+            case 'E':
+                return EAST;
+            case 'O':
+                return WEST;
+        }
+        return NORTH;
     }
 }
