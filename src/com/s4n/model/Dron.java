@@ -1,5 +1,7 @@
 package com.s4n.model;
 import com.s4n.util.Constants;
+import com.s4n.util.Util;
+
 import java.util.UUID;
 
 import static com.s4n.util.Constants.orientation.*;
@@ -10,16 +12,20 @@ public class Dron {
     private int x;
     private int y;
     private Constants.orientation o;
+    private int lunchNumber;
 
     public String getPosition(){
-        return "(" + x + ", " + y + ") direction: " + o;
+        return "(" + x + ", " + y + ") dirección: " + Util.translateOrientation(o);
     }
+
+
 
     public Dron() {
         id = UUID.randomUUID();
         this.x = 0;
         this.y = 0;
         this.o = Constants.orientation.NORTH;
+        this.lunchNumber = 3;
     }
 
     public void move(){
@@ -84,6 +90,11 @@ public class Dron {
         }
     }
 
+    public boolean deliverLunch(){
+        this.lunchNumber--;
+        return lunchNumber >= 0;
+    }
+
 
     public UUID getId() {
         return id;
@@ -104,5 +115,22 @@ public class Dron {
 
     public void setY(int y) {
         this.y = y;
+    }
+
+    public Constants.orientation getO() {
+        return o;
+    }
+
+    public void setO(Constants.orientation o) {
+        this.o = o;
+    }
+
+
+    public int getLunchNumber() {
+        return lunchNumber;
+    }
+
+    public void setLunchNumber(int lunchNumber) {
+        this.lunchNumber = lunchNumber;
     }
 }
