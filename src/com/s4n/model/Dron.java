@@ -14,20 +14,14 @@ public class Dron {
     private Constants.orientation o;
     private int lunchNumber;
 
+    // return the dron position and direction
     public String getPosition(){
         return "(" + x + ", " + y + ") dirección " + Util.translateOrientation(o);
     }
 
 
 
-    public Dron() {
-        id = UUID.randomUUID();
-        this.x = 0;
-        this.y = 0;
-        this.o = Constants.orientation.NORTH;
-        this.lunchNumber = 0;
-    }
-
+    // Dron class contructor
     public Dron(int x, int y, Constants.orientation o) {
         id = UUID.randomUUID();
         this.x = x;
@@ -35,6 +29,7 @@ public class Dron {
         this.o = o;
     }
 
+    //* Move the dron in the current direction
     public void move(){
 
         switch (o){
@@ -53,6 +48,8 @@ public class Dron {
         }
 
     }
+
+    // Change the dron direction
 
     public void rotate(String direction){
         if(direction.equals("D"))
@@ -97,6 +94,7 @@ public class Dron {
         }
     }
 
+    // Increment the number of lunch delivered
     public boolean deliverLunch(){
         this.lunchNumber++;
         return lunchNumber >= 0;

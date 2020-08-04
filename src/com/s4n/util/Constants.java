@@ -9,4 +9,6 @@ public class Constants {
         WEST
     }
 
+    public final static int MAX_LUNCH_CAPACITY = 3;
+
 }

@@ -11,7 +11,7 @@ class FlightControllerTest {
     @Test
     void runDron() {
         Dron dron = new Dron(0, 0, Constants.orientation.NORTH);
-        FlightController fc = new FlightController();
+        DronFlightBusiness fc = new DronFlightBusiness();
         fc.runDron(dron, "AAAAIAA ");
         assertEquals(-2, dron.getX());
         assertEquals(4, dron.getY());
@@ -22,7 +22,7 @@ class FlightControllerTest {
     @Test
     void runAllRoutes() {
         Dron dron = new Dron(0, 0, Constants.orientation.NORTH);
-        FlightController fc = new FlightController();
+        DronFlightBusiness fc = new DronFlightBusiness();
         fc.runDron(dron, "AAAAIAA ");
         fc.runDron(dron, "DDDAIAD ");
         fc.runDron(dron, "AAIADAD ");
